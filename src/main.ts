@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('RyC endpoint')
     .setDescription('RyC endpoint for wem.io project')
     .setVersion('1.0')
-    .addTag('executives')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
