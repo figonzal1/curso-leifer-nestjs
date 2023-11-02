@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEjecutivoDto } from './dto/create-ejecutivo.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Ejecutivos, EjecutivosDocument } from './schema/ejecutivo.schema';
+import { Ejecutivo } from './schema/ejecutivo.schema';
 import { Model } from 'mongoose';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class EjecutivosService {
   constructor(
-    @InjectModel(Ejecutivos.name)
-    private ejecutivosModule: Model<EjecutivosDocument>,
+    @InjectModel(Ejecutivo.name)
+    private ejecutivosModule: Model<Ejecutivo>,
   ) {}
 
   async create(createEjecutivoDto: CreateEjecutivoDto) {
@@ -19,7 +20,9 @@ export class EjecutivosService {
     return await this.ejecutivosModule.find({});
   }
 
-  async findOne(id: number) {
-    return await this.ejecutivosModule.findOne({ _id: id });
+  async findOne(id: string) {
+    return await this.ejecutivosModule.findOne({
+      _id: new ObjectId(id),
+    });
   }
 }

@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { EjecutivosService } from './ejecutivos.service';
 import { CreateEjecutivoDto } from './dto/create-ejecutivo.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -28,6 +20,6 @@ export class EjecutivosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ejecutivosService.findOne(+id);
+    return this.ejecutivosService.findOne(id);
   }
 }
