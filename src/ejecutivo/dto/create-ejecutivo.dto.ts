@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsEmail } from 'class-validator';
+import { Sucursal } from 'src/sucursal/entities/sucursal.entity';
 
 export class CreateEjecutivoDto {
   @IsNotEmpty()
@@ -13,4 +14,7 @@ export class CreateEjecutivoDto {
 
   @IsNotEmpty()
   rut: string;
+
+  @IsNotEmpty()
+  sucursal: Sucursal;
 }

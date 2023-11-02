@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
+import { Sucursal } from 'src/sucursal/entities/sucursal.entity';
 
 export type EjecutivosDocument = HydratedDocument<Ejecutivo>;
 
@@ -16,6 +17,13 @@ export class Ejecutivo {
 
   @Prop({ unique: true, required: true })
   email: string;
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Sucursal',
+    required: true,
+  })
+  sucursal: Sucursal;
 }
 
 export const EjecutivoSchema = SchemaFactory.createForClass(Ejecutivo);
