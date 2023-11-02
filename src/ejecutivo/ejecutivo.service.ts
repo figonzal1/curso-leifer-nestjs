@@ -16,12 +16,14 @@ export class EjecutivoService {
   }
 
   async findAll() {
-    return await this.ejecutivoModel.find({});
+    return await this.ejecutivoModel.find({}).populate('sucursal');
   }
 
   async findOne(id: string) {
-    return await this.ejecutivoModel.findOne({
-      _id: new ObjectId(id),
-    });
+    return await this.ejecutivoModel
+      .findOne({
+        _id: new ObjectId(id),
+      })
+      .populate('sucursal');
   }
 }
