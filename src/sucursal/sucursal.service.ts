@@ -19,7 +19,7 @@ export class SucursalService {
     return await this.sucursalModel.find({}).exec();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return await this.sucursalModel.findById(id).exec();
   }
 }

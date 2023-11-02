@@ -12,6 +12,6 @@ export class SucursalController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.sucursalService.findOne(+id);
+    return this.sucursalService.findOne(id);
   }
 }

@@ -8,9 +8,9 @@ export class DataLoaderService {
   async loadData() {
     // Aquí puedes agregar la lógica para cargar tus datos
     // Por ejemplo, podrías crear nuevos "ejecutivos" si no existen en la base de datos
-    const surcursales = await this.sucursalService.findAll();
+    const sucursales = await this.sucursalService.findAll();
 
-    if (surcursales.length == 0) {
+    if (sucursales.length == 0) {
       await this.sucursalService.create({
         nombre: 'Santa Cruz',
       });
