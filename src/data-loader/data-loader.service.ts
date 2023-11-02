@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { SucursalesService } from 'src/sucursales/sucursales.service';
+import { SucursalService } from 'src/sucursal/sucursal.service';
 
 @Injectable()
 export class DataLoaderService {
-  constructor(private readonly sucursalService: SucursalesService) {}
+  constructor(private readonly sucursalService: SucursalService) {}
 
   async loadData() {
     // Aquí puedes agregar la lógica para cargar tus datos
@@ -11,7 +11,6 @@ export class DataLoaderService {
     const surcursales = await this.sucursalService.findAll();
 
     if (surcursales.length == 0) {
-		
       await this.sucursalService.create({
         nombre: 'Santa Cruz',
       });
@@ -21,7 +20,7 @@ export class DataLoaderService {
       });
 
       await this.sucursalService.create({
-        nombre: 'Providencia',
+        nombre: 'Las Condes',
       });
 
       await this.sucursalService.create({

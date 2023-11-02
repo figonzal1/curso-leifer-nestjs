@@ -3,7 +3,9 @@ import { HydratedDocument } from 'mongoose';
 
 export type SucursalesDocument = HydratedDocument<Sucursal>;
 
-@Schema()
+@Schema({
+  collection: 'sucursal',
+})
 export class Sucursal {
   @Prop({ required: true })
   nombre: string;
