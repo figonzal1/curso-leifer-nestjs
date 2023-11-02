@@ -1,22 +1,25 @@
 import { Injectable } from '@nestjs/common';
+import { Sucursal } from './schema/sucursal.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { CreateSucursaleDto } from './dto/create-sucursale.dto';
 
 @Injectable()
 export class SucursalesService {
-  findAll() {
-    return [
-      {
-        nombre: 'Santa cruz',
-      },
-      {
-        nombre: 'Santiago',
-      },
-      {
-        nombre: 'Providencia',
-      },
-    ];
+  constructor(
+    @InjectModel(Sucursal.name)
+    private sucursalesModel: Model<Sucursal>,
+  ) {}
+
+  async create(createSucursalDto: CreateSucursaleDto) {
+    return await this.sucursalesModel.create(createSucursalDto);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sucursale`;
+  async findAll() {
+    return await this.sucursalesModel.find({}).exec();
+  }
+
+  async findOne(id: number) {
+    return await this.sucursalesModel.findById(id).exec();
   }
 }
